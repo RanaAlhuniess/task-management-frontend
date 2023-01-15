@@ -1,0 +1,6 @@
+<mat-form-field >
+    <mat-label>{{label}}</mat-label>
+    <input matInput  [placeholder]="placeHolder" [(ngModel)]="searchText" (keydown)="keyDownFunction($event)">
+    <mat-icon matSuffix (click)="search()" >search</mat-icon>
+
+</mat-form-field>
