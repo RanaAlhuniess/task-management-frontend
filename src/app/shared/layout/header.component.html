@@ -75,12 +75,12 @@
       <button routerLink="/login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>login</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <button routerLink="/register"  mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>person_add</mat-icon>
       </button>
     </ng-container>
     <ng-container *appShowAuthed="true">
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <button mat-icon-button  (click)="logout()" class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         <mat-icon>logout</mat-icon>
       </button>
     </ng-container>
