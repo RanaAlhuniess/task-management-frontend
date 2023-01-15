@@ -1,0 +1,20 @@
+<mat-card class="task-card">
+    <mat-card-header>
+        <mat-card-title>
+            {{task.title}}
+            <app-task-category-label *ngFor="let category of task.categories;"
+                                     [category]="category">
+            </app-task-category-label>
+        </mat-card-title>
+        <mat-card-subtitle>Due date: {{task.due_date}}</mat-card-subtitle>
+
+    </mat-card-header>
+    <mat-card-content>
+        <p>{{task.description}}</p>
+        <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button>View</button>
+        <button mat-button>Edit</button>
+    </mat-card-actions>
+</mat-card>
