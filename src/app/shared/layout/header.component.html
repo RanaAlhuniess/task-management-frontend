@@ -1,0 +1,88 @@
+<!--<nav class="navbar navbar-light">-->
+<!--  <div class="container">-->
+<!--    <a class="navbar-brand" routerLink="/">home</a>-->
+
+<!--    &lt;!&ndash; Show this for logged out users &ndash;&gt;-->
+<!--    <ul *appShowAuthed="false"-->
+<!--      class="nav navbar-nav pull-xs-right">-->
+
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link"-->
+<!--          routerLink="/">-->
+<!--          Home-->
+<!--        </a>-->
+<!--      </li>-->
+
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link"-->
+<!--          routerLink="/login"-->
+<!--          routerLinkActive="active">-->
+<!--          Sign in-->
+<!--        </a>-->
+<!--      </li>-->
+
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link"-->
+<!--          routerLink="/register"-->
+<!--          routerLinkActive="active">-->
+<!--          Sign up-->
+<!--        </a>-->
+<!--      </li>-->
+
+<!--    </ul>-->
+
+<!--    &lt;!&ndash; Show this for logged in users &ndash;&gt;-->
+<!--    <ul *appShowAuthed="true"-->
+<!--      class="nav navbar-nav pull-xs-right">-->
+
+<!--      <li class="nav-item">-->
+<!--        <a class="nav-link"-->
+<!--          routerLink="/"-->
+<!--          routerLinkActive="active"-->
+<!--          [routerLinkActiveOptions]="{ exact: true }">-->
+<!--          Home-->
+<!--        </a>-->
+<!--      </li>-->
+
+<!--&lt;!&ndash;      <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;        <a class="nav-link"&ndash;&gt;-->
+<!--&lt;!&ndash;          routerLink="/editor"&ndash;&gt;-->
+<!--&lt;!&ndash;          routerLinkActive="active">&ndash;&gt;-->
+<!--&lt;!&ndash;          <i class="ion-compose"></i>&nbsp;New Article&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+<!--&lt;!&ndash;      </li>&ndash;&gt;-->
+
+<!--      <li class="nav-item" *ngIf="currentUser">-->
+<!--        <a class="nav-link"-->
+<!--          [routerLink]="['/profile', currentUser.name]"-->
+<!--          routerLinkActive="active">-->
+<!--          {{ currentUser.name }}-->
+<!--        </a>-->
+<!--      </li>-->
+
+<!--    </ul>-->
+
+<!--  </div>-->
+<!--</nav>-->
+
+
+
+<p>
+  <mat-toolbar color="primary">
+    <span>Task Management App</span>
+    <span class="example-spacer"></span>
+    <ng-container *appShowAuthed="false">
+      <button routerLink="/login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>login</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </ng-container>
+    <ng-container *appShowAuthed="true">
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </ng-container>
+  </mat-toolbar>
+</p>
