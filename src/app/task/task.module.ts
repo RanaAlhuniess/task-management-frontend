@@ -9,6 +9,7 @@ import { TaskCategoryLabelComponent } from './task-category-label/task-category-
 import {MatChipsModule} from "@angular/material/chips";
 import {MatInputModule} from "@angular/material/input";
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {MatTooltipModule} from "@angular/material/tooltip";
         MatListModule,
         MatChipsModule,
         MatInputModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatProgressBarModule
     ],
     declarations: [
         TaskListComponent,
