@@ -17,7 +17,7 @@ import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
     styleUrls: ['./task-edit.component.scss']
 })
 export class TaskEditComponent {
-    task!: Task;
+    task!: Partial<Task>;
 
     categoryCtrl = new FormControl('');
     filteredCategories: Observable<Category[]> = new Observable<Category[]>();
@@ -37,7 +37,6 @@ export class TaskEditComponent {
                 private router: Router,
                 private fb: FormBuilder,
                 private cd: ChangeDetectorRef) {
-
         this.filteredCategories = this.categoryCtrl.valueChanges.pipe(startWith(null), map((category: string | null) => (category ? this._filterCategories(category) : this.allCategories.slice())),);
         this.filteredUsers = this.userCtrl.valueChanges.pipe(startWith(null), map((user: string | null) => (user ? this._filterUsers(user) : this.allUsers.slice())),);
     }
@@ -46,9 +45,9 @@ export class TaskEditComponent {
         // Retreive the prefetched task
         this.route.data.subscribe((data) => {
             const {task} = data;
-            this.task = task;
+            this.task = task?task: {categories:[], users:[]};
             this.initForm();
-            console.log(task);
+            console.log(this.task);
 
             this.cd.markForCheck();
         });
@@ -75,32 +74,32 @@ export class TaskEditComponent {
     categorySelected($event: MatAutocompleteSelectedEvent) {
         const category = this.allCategories.find(c => c.name === $event.option.viewValue);
         if (!category) return;
-        this.task.categories.push(category);
+        this.task?.categories?.push(category);
         if (this.categoryInput) this.categoryInput.nativeElement.value = '';
         this.categoryCtrl.setValue(null);
     }
 
     categoryRemoved(category: Category) {
-        const index = this.task.categories.indexOf(category);
+        const index = this.task.categories?.indexOf(category);
 
-        if (index >= 0) {
-            this.task.categories.splice(index, 1);
+        if (index!=undefined && index >= 0) {
+            this.task.categories?.splice(index, 1);
         }
     }
 
     userSelected($event: MatAutocompleteSelectedEvent) {
         const user = this.allUsers.find(c => c.name === $event.option.viewValue);
         if (!user) return;
-        this.task.users.push(user);
+        this.task.users?.push(user);
         if (this.userInput) this.userInput.nativeElement.value = '';
         this.userCtrl.setValue(null);
     }
 
     userRemoved(user: User) {
-        const index = this.task.users.indexOf(user);
+        const index = this.task.users?.indexOf(user);
 
-        if (index >= 0) {
-            this.task.users.splice(index, 1);
+        if (index!=undefined && index >= 0) {
+            this.task.users?.splice(index, 1);
         }
     }
 

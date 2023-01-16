@@ -1,26 +1,26 @@
-<h2>Edit Task:</h2>
+<h2></h2>
 
 <div class="detail-container">
     <form  [formGroup]="taskForm" (ngSubmit)="submitForm()">
     <mat-form-field appearance="fill">
         <mat-label>Title</mat-label>
-        <input matInput formControlName="title" [value]="task.title">
+        <input matInput formControlName="title" >
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Choose a due date</mat-label>
-        <input matInput formControlName="due_date" [matDatepicker]="picker" [value]="getDate(task.due_date)">
+        <input matInput formControlName="due_date" [matDatepicker]="picker">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <mat-form-field appearance="fill">
         <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description" [value]="task.description"></textarea>
+        <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
     <mat-form-field class="chip-list" appearance="fill" color="accent">
         <mat-label>Categories</mat-label>
-        <mat-chip-grid #chipGrid aria-label="Category selection">
-            <mat-chip-row [ngStyle]="{'background-color' : category.color}" *ngFor="let category of task.categories"
+        <mat-chip-grid #chipGrid aria-label="Category selection" >
+            <mat-chip-row [ngStyle]="{'background-color' : category.color}" *ngFor="let category of task?.categories"
                           (removed)="categoryRemoved(category)">
                 {{category.name}}
                 <button matChipRemove [attr.aria-label]="'remove ' + category.name">
@@ -39,7 +39,7 @@
     <mat-form-field class="chip-list" appearance="fill" color="accent">
         <mat-label>Users</mat-label>
         <mat-chip-grid #userChipGrid aria-label="User selection">
-            <mat-chip-row *ngFor="let user of task.users" (removed)="userRemoved(user)">
+            <mat-chip-row *ngFor="let user of task?.users" (removed)="userRemoved(user)">
                 {{user.name}}
                 <button matChipRemove [attr.aria-label]="'remove ' + user.name">
                     <mat-icon>cancel</mat-icon>
@@ -56,7 +56,7 @@
     </mat-form-field>
     <h3>TODO List:</h3>
     <mat-list role="list" class="subtasks-list">
-        <mat-list-item role="listitem" *ngFor="let subtask of task.sub_tasks">{{subtask.description}}</mat-list-item>
+        <mat-list-item role="listitem" *ngFor="let subtask of task?.sub_tasks">{{subtask.description}}</mat-list-item>
     </mat-list>
     <button mat-raised-button color="primary">Save</button>
     </form>

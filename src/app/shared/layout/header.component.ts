@@ -6,6 +6,7 @@ import {User} from "../../core/models/user.model";
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {

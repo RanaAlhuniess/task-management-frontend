@@ -1,6 +1,11 @@
 <mat-progress-bar *ngIf="!loading" mode="indeterminate"></mat-progress-bar>
-
+<button mat-raised-button
+       routerLink="/task/create"
+        color="primary">
+    Add New Task
+</button>
 <div class="tasks-list-container" *ngIf="loading">
+
         <app-search (onSearch)="search($event)"></app-search>
     <div class="tasks-list">
         <app-task *ngFor="let task of tasks | paginate : {

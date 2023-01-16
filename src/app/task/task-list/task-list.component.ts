@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {TaskService} from "../../core/services/task.service";
 import {Task} from "../../core/models/task.model";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-task-list',
@@ -17,7 +18,7 @@ export class TaskListComponent {
     loading = false;
     title = '';
 
-    constructor(private taskService: TaskService,private cd: ChangeDetectorRef) {
+    constructor(private taskService: TaskService,private cd: ChangeDetectorRef, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -47,7 +48,6 @@ export class TaskListComponent {
     }
     retrieveTasks(): void {
         const params = this.getRequestParams(this.title, this.page);
-        console.log(params);
         this.taskService.getAll(params)
             .subscribe({
                 next: response => {
@@ -55,7 +55,6 @@ export class TaskListComponent {
                     this.tasks = tasks;
                     this.totalItems = totalItems;
                     this.loading = true
-                    console.log(this.totalItems);
                     this.cd.markForCheck();
                 },
                 error: error => {
