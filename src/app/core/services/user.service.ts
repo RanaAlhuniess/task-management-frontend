@@ -5,6 +5,7 @@ import {ApiService} from './api.service';
 import {JwtService} from './jwt.service';
 import {distinctUntilChanged, map} from 'rxjs/operators';
 import {User} from "../models/user.model";
+import {Category} from "../models/category.model";
 
 
 @Injectable({
@@ -70,6 +71,15 @@ export class UserService {
 
   getCurrentUser(): User {
     return this.currentUserSubject.value;
+  }
+
+  getAll(): Observable<User[]> {
+    return this.apiService.get(
+        '/users/all')
+        .pipe(map(data => {
+              return data;
+            }
+        ));
   }
 
 }
