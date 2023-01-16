@@ -1,10 +1,8 @@
 <mat-progress-bar *ngIf="!loading" mode="indeterminate"></mat-progress-bar>
 
-<div class="tasks-list" *ngIf="loading">
-    <div class="col-md-8">
+<div class="tasks-list-container" *ngIf="loading">
         <app-search (onSearch)="search($event)"></app-search>
-    </div>
-    <div class="col-md-12">
+    <div class="tasks-list">
         <app-task *ngFor="let task of tasks | paginate : {
                   itemsPerPage: pageSize,
                   currentPage: page,
@@ -13,12 +11,10 @@
 
         </app-task>
     </div>
-    <div class="col-md-12">
         <pagination-controls
                 previousLabel="Prev"
                 nextLabel="Next"
                 [responsive]="true"
                 (pageChange)="handlePageChange($event)">
         </pagination-controls>
-    </div>
 </div>

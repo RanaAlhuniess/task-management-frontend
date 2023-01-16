@@ -16,7 +16,8 @@ export class AuthComponent implements OnInit {
     errors: Errors = {errors: {}};
     isSubmitting = false;
     authForm: FormGroup;
-    error:string= '';
+    error: string = '';
+
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -55,18 +56,17 @@ export class AuthComponent implements OnInit {
         this.userService
             .attemptAuth(this.authType, credentials)
             .subscribe({
-                    next: _ => {
-                        this.router.navigateByUrl('/')
-                    },
-                    error: err => {
-                        this.error =  (this.authType === 'login') ?
-                            'The username and password were not recognized' :
-                            'Sign up';
-                        console.log(err)
-                        this.isSubmitting = false;
-                        this.cd.markForCheck();
-                    }
+                next: _ => {
+                    this.router.navigateByUrl('/')
+                },
+                error: err => {
+                    this.error = (this.authType === 'login') ?
+                        'The username and password were not recognized' :
+                        'Sign up';
+                    console.log(err)
+                    this.isSubmitting = false;
+                    this.cd.markForCheck();
                 }
-            );
+            });
     }
 }
