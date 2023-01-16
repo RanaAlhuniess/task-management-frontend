@@ -10,6 +10,13 @@ import {MatChipsModule} from "@angular/material/chips";
 import {MatInputModule} from "@angular/material/input";
 import {MatTooltipModule} from "@angular/material/tooltip";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { TaskDetailComponent } from './task-detail/task-detail.component';
+import {TaskRoutingModule} from "./task-routing.module";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { TaskEditComponent } from './task-edit/task-edit.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -21,12 +28,19 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
         MatChipsModule,
         MatInputModule,
         MatTooltipModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        TaskRoutingModule,
+        MatTabsModule,
+        MatAutocompleteModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     declarations: [
         TaskListComponent,
         TaskComponent,
-        TaskCategoryLabelComponent
+        TaskCategoryLabelComponent,
+        TaskDetailComponent,
+        TaskEditComponent
     ],
     providers: [],
     exports: [

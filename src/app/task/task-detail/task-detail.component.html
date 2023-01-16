@@ -1,0 +1,29 @@
+<div class="detail-container">
+    <button mat-raised-button
+            [routerLink]="['/task', task.id, 'edit']"
+            color="primary">
+        Edit
+    </button>
+    <h1>{{task.title}}</h1>
+    <h3>{{task.due_date}}</h3>
+    <p>{{task.description}}</p>
+    <mat-divider></mat-divider>
+    <h3>Categories:</h3>
+    <mat-chip-listbox aria-label="Category list">
+        <mat-chip [ngStyle]="{'background-color' : category.color}" *ngFor="let category of task.categories">
+            {{category.name}}
+        </mat-chip>
+    </mat-chip-listbox>
+
+    <h3>Users:</h3>
+    <mat-chip-listbox aria-label="User list">
+        <mat-chip *ngFor="let user of task.users">
+            {{user.name}}
+        </mat-chip>
+    </mat-chip-listbox>
+    <h3>Subtasks:</h3>
+    <mat-list role="list" class="subtasks-list">
+        <mat-list-item role="listitem" *ngFor="let subtask of task.sub_tasks">{{subtask.description}}</mat-list-item>
+    </mat-list>
+
+</div>

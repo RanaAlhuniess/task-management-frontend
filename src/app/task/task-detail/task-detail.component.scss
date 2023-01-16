@@ -1,0 +1,11 @@
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.subtasks-list {
+  overflow-y: auto;
+}
+button {
+  align-self: end;
+}

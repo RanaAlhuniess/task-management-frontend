@@ -23,4 +23,10 @@ export class TaskService {
             ));
     }
 
+    get(id): Observable<Task> {
+        return this.apiService.get('/tasks/' + id)
+            .pipe(map(data => data));
+    }
+
+
 }

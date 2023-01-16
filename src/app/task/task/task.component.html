@@ -1,4 +1,4 @@
-<mat-card class="task-card">
+<mat-card class="task-card" appearance="outlined">
     <mat-card-header>
         <mat-card-title>
             {{task.title}}
@@ -14,7 +14,7 @@
         <mat-divider></mat-divider>
     </mat-card-content>
     <mat-card-actions align="end">
-        <button mat-button>View</button>
-        <button mat-button>Edit</button>
+        <button mat-button [routerLink]="['/task', task.id]"> View</button>
+        <button mat-button [routerLink]="['/task', task.id, 'edit']">Edit</button>
     </mat-card-actions>
 </mat-card>
